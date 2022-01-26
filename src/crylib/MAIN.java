@@ -1,12 +1,25 @@
 package crylib;
 
+import java.io.UnsupportedEncodingException;
+
+import Compression.Deflator;
+import encryption.XOR;
+
 public class MAIN {
 
-	public static void main (String[]args) {
+	static String str = "";
+	public static void main (String[]args) throws UnsupportedEncodingException {
 		
-		System.out.println(new toBinary("afad1134689").getFinal());
-		System.out.println(toBase64.Ecr(new toBinary("afad1134689").getFinal()));
-		BlockDistribution.block_div(toBase64.Ecr(new toBinary("afad1134689").getFinal()));
+		BlockDistribution.block_div(toBase64.Ecr(new toBinary(1234567890).getFinal()));
+		
+		BlockDistribution.Blocks.forEach((block) -> {
+			str += block;
+		});
+		
+		//Still need to shuffle
+		
+		System.out.println(XOR.stringXor(Deflator.Deflate(str), "2000"));
+		
 		
 	}
 }
